@@ -6,6 +6,7 @@
   "repository": "https://github.com/elinlutz/geriatric-map",
   "author": "Elin Lütz",
   "dependencies": {
+    "@react-google-maps/api": "^1.8.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
@@ -16,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "run test": "react-scripts test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
