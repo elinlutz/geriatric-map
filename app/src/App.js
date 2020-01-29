@@ -41,28 +41,41 @@ const onLoad = marker => {
   //console.log('marker: ', marker)
 }
 
-function Markers() {
-  return units.map(unit => {
-    return (
-    <Marker
-      onLoad={onLoad}
-      key={unit.id}
-      position={{lat: unit.latitude, lng: unit.longitude}}
-      visible={true}
-      label={{ text: unit.name, fontSize: "12px", fontWeight: "bold" }}
-      title={unit.name}
-    />)
-  })
-}
-
 function MyComponent() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyDXvhN_6f1TXjc-6YlFO_Exo5hN98yh23o",
     language: "sv",
   })
-  const [showInfo, setShowInfo] = useState(false);
+  const [showUnit, setShowUnit] = useState()
 
-  const onClick = () => setShowInfo(true)
+  function Markers() {
+    return units.map(unit => {
+      return (
+      <Marker
+        onLoad={onLoad}
+        onClick={() => setShowUnit(unit.id)}
+        key={unit.id}
+        position={{lat: unit.latitude, lng: unit.longitude}}
+        visible={true}
+        label={{ text: unit.name, fontSize: "12px", fontWeight: "bold" }}
+        title={unit.name}
+        >
+        {showUnit === unit.id ? 
+        <InfoWindow
+        position={{lat: unit.latitude, lng: unit.longitude}}
+        onCloseClick={() => setShowUnit(null)}>
+        <div style={divStyle}>
+          <h1>
+          {unit.latitude}
+          {' '}
+          {unit.longitude}
+          </h1>
+        </div>
+        </InfoWindow> : null}
+        </Marker>
+      )
+    })
+  }
 
   const renderMap = () => {
     return <GoogleMap
@@ -72,7 +85,7 @@ function MyComponent() {
       center={center}
       zoom={15}
     >
-    <Markers/>
+    <Markers />
   </GoogleMap>
   }
 
@@ -82,27 +95,6 @@ function MyComponent() {
 
   return isLoaded ? renderMap() : <CantLoad />
 }
-
-    {/* <Marker
-      onLoad={onLoad}
-      position={position}
-      visible={true}
-      onClick={onClick}
-    >
-
-    {showInfo ? 
-    <InfoWindow
-      position={position}
-      onCloseClick={() => setShowInfo(false)}>
-      <div style={divStyle}>
-        <h1>
-        {position.lat}
-        {' '}
-        {position.lng}
-        </h1>
-      </div>
-      </InfoWindow> : null}
-    </Marker> */}
 
 function Test() {
   return (
