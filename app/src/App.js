@@ -25,7 +25,7 @@ const center = {
 }
 
 const position = {
-  lat: 59.312870,
+  lat: 59.312875,
   lng: 18.091620
 }
 
