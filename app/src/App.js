@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
-import logo from './logo.svg';
 import './App.css';
+
 
 var units = [
   { id: 1, name: 'Magdalenagården', latitude: 59.3150, longitude: 18.094620},
@@ -43,7 +43,7 @@ const onLoad = marker => {
 
 function MyComponent() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDXvhN_6f1TXjc-6YlFO_Exo5hN98yh23o",
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
     language: "sv",
   })
   const [showUnit, setShowUnit] = useState()
