@@ -72,19 +72,20 @@ function MyComponent() {
     <Marker
       onLoad={onLoad}
       position={position}
+      visible={true}
       onClick={onClick}
     >
+    {showInfo ? 
     <InfoWindow
-      onLoad={() => showInfo}
-      position={position}>
+      position={position}
+      onCloseClick={() => setShowInfo(false)}>
       <div style={divStyle}>
         <h1>Hem</h1>
       </div>
-      </InfoWindow>
+      </InfoWindow> : null}
     </Marker>
 
   </GoogleMap>
-
   }
 
   if (loadError) {
