@@ -1,7 +1,10 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "private": true,
+  "description": "Geriatric map app",
+  "main": "index.js",
+  "repository": "https://github.com/elinlutz/geriatric-map",
+  "author": "Elin Lütz",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
