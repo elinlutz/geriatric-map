@@ -1,5 +1,5 @@
-import React from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import React, { useState } from 'react';
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,8 +7,12 @@ const options = {
   zoomControlOptions: {
     // position: google.maps.ControlPosition.RIGHT_CENTER // ,
     // ...otherOptions
-  }
+  },
 }
+
+// const infoOptions = {
+//   content: "hejhejhej"
+// }
 
 function CantLoad() {
   return <p>Can't load</p>
@@ -29,6 +33,12 @@ const position = {
   lng: 18.091620
 }
 
+const divStyle = {
+  background: `white`,
+  border: `1px solid #ccc`,
+  padding: 15
+}
+
 const onLoad = marker => {
   console.log('marker: ', marker)
 }
@@ -38,6 +48,10 @@ function MyComponent() {
     googleMapsApiKey: "AIzaSyDXvhN_6f1TXjc-6YlFO_Exo5hN98yh23o",
     language: "swedish",
   })
+  const [showInfo, setShowInfo] = useState(false);
+
+
+  const onClick = () => setShowInfo(true)
 
   const renderMap = () => {
     // wrapping to a function is useful in case you want to access `window.google`
@@ -53,12 +67,22 @@ function MyComponent() {
       id="marker-example"
       mapContainerStyle={mapContainerStyle}
       center={center}
-      zoom={5}
+      zoom={15}
     >
     <Marker
       onLoad={onLoad}
       position={position}
-    />
+      onClick={onClick}
+    >
+    <InfoWindow
+      onLoad={() => showInfo}
+      position={position}>
+      <div style={divStyle}>
+        <h1>Hem</h1>
+      </div>
+      </InfoWindow>
+    </Marker>
+
   </GoogleMap>
 
   }
