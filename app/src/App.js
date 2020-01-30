@@ -57,7 +57,6 @@ function MyComponent() {
         key={unit.id}
         position={{lat: unit.latitude, lng: unit.longitude}}
         visible={true}
-        label={{ text: unit.name, fontSize: "12px", fontWeight: "bold" }}
         title={unit.name}
         >
         {showUnit === unit.id ? 
@@ -66,9 +65,7 @@ function MyComponent() {
         onCloseClick={() => setShowUnit(null)}>
         <div style={divStyle}>
           <h1>
-          {unit.latitude}
-          {' '}
-          {unit.longitude}
+          {unit.name}
           </h1>
         </div>
         </InfoWindow> : null}
