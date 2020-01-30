@@ -1,6 +1,10 @@
 {
     "extends": [
-    "standard",
-    "plugin:react/recommended"
-  ]
+        "standard",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "semi": "error",
+        "indent": ["error", 2]
+    }
 }

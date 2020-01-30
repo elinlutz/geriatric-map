@@ -17,7 +17,7 @@ const options = {
 }
 
 function CantLoad () {
-  return <p>Can't load</p>
+  return <p>Can not load</p>
 }
 
 const mapContainerStyle = {
